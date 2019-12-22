@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_22_223544) do
+ActiveRecord::Schema.define(version: 2019_12_22_225541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "documents", force: :cascade do |t|
+    t.string "name"
+    t.text "content"
+    t.bigint "folder_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["folder_id"], name: "index_documents_on_folder_id"
+  end
+
   create_table "folders", force: :cascade do |t|
     t.string "name"
+    t.text "content"
     t.bigint "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -35,5 +45,6 @@ ActiveRecord::Schema.define(version: 2019_12_22_223544) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "documents", "folders"
   add_foreign_key "folders", "folders", column: "parent_id"
 end
