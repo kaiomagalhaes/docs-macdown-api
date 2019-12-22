@@ -3,9 +3,7 @@ FROM ruby:2.6.2-stretch
 
 RUN apt-get update \
     && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
-    && apt-get install -y nodejs \
     && apt-get install -y libqtwebkit4 libqt4-dev xvfb \
-    && npm install -g yarn \
     && rm -rf /var/lib/apt/lists/*
 
 RUN gem install bundler
@@ -16,9 +14,5 @@ WORKDIR /share
 ADD Gemfile /share/Gemfile
 ADD Gemfile.lock /share/Gemfile.lock
 RUN bundle install --with development
-
-ADD package.json /share/package.json
-RUN npm install
-RUN yarn
 
 ADD ./ /share

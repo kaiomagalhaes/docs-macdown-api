@@ -2,12 +2,12 @@ version: '2'
 services:
   db:
     image: postgres
-    container_name: rails-base-project-db
+    container_name: documentation-macdown-api-db
     env_file:
       - .env
 
   app:
-    container_name: rails-base-project-app
+    container_name: documentation-macdown-api-app
     tty: true
     stdin_open: true
     build:
