@@ -7,7 +7,7 @@ class DocumentsController < ApplicationController
   def index
     @documents = Document.all
 
-    render json: @documents
+    render json: @documents, each_serializer: DocumentSerializer
   end
 
   # GET /documents/1

@@ -7,7 +7,7 @@ class FoldersController < ApplicationController
   def index
     @folders = Folder.all
 
-    render json: @folders.to_json(include: %i[sub_folders parent])
+    render json: @folders, each_serializer: FolderSerializer
   end
 
   # GET /folders/1
