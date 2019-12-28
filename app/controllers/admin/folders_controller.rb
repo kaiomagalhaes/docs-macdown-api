@@ -38,7 +38,7 @@ module Admin
 
     # Only allow a trusted parameter "white list" through.
     def folder_params
-      params.require(:folder).permit(:name, :parent_id)
+      params.require(:folder).permit(:name, :content, :parent_id)
     end
   end
 end
