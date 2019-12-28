@@ -30,6 +30,7 @@ gem 'rack-cors'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'ancestry'
 gem 'devise'
+gem 'devise-jwt', '~> 0.6.0'
 
 group :test do
   gem 'shoulda-matchers'
