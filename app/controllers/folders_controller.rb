@@ -15,6 +15,12 @@ class FoldersController < ApplicationController
     render json: @folder
   end
 
+  def roots
+    @folders = Folder.where('folders.ancestry is null')
+
+    render json: @folders
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

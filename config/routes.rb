@@ -10,6 +10,8 @@ Rails.application.routes.draw do
              }
 
   resources :documents, only: [:index, :show]
+
+  get 'folders/roots', to: 'folders#roots'
   resources :folders, only: [:index, :show]
 
   namespace :admin do
